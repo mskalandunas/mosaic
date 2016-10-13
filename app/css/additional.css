@@ -1,0 +1,56 @@
+body {
+  font-family: 'Roboto Mono';
+  color: rgba(0, 0, 0, 0.7);
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  cursor: default;
+}
+
+a {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+footer {
+  text-align: center;
+  margin: 2em 0;
+}
+
+footer div a i {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.fa {
+  font-size: 1.2em;
+}
+
+.mosaic--divider {
+  border-top: 1px solid rgba(0, 0, 0, 0.7);
+  width: 40%;
+  margin-top: 1.2em;
+  transition: 0.6s linear;
+}
+
+.title {
+  word-spacing: 9999px;
+  display: block;
+}
+
+.title, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat';
+  font-size: 2.4em;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-left: 8.333%;
+  letter-spacing: 0.175em;
+  text-transform: uppercase;
+}
+
+.title span.mosaic--subtitle {
+  color: #ff8080;
+  font-weight: 700;
+}
+
+::selection {
+  color: #fff;
+  background-color: #000;
+}
