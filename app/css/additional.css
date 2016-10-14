@@ -60,8 +60,9 @@ header .mosaic--divider,
   margin-top: 1.2em;
 }
 
-.icon-container a i {
-  font-size: 1.2em;
+.icon-container .fa {
+  color: #fff;
+  font-size: .6em;
 }
 
 .icon-container a:not(:first-child) {
@@ -115,11 +116,16 @@ header .mosaic--divider,
 }
 
 /* Images */
+#mosaic--about,
 #mosaic--hero,
 #mosaic--contact {
   background-repeat: no-repeat;
   background-size: cover;
 }
+#mosaic--about {
+  background-image: url('../img/bg-3.jpg');
+}
+
 
 #mosaic--contact {
   background-image: url('../img/bg-2.jpg');
