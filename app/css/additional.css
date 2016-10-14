@@ -1,13 +1,19 @@
 body {
   font-family: 'Roboto Mono';
   color: rgba(0, 0, 0, 0.7);
+  font-size: 1.1em;
   -webkit-font-smoothing: antialiased;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
   cursor: default;
 }
 
+.hero {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
 a {
   color: rgba(0, 0, 0, 0.7);
+  transition: 0.2s ease;
 }
 
 footer {
@@ -19,8 +25,47 @@ footer div a i {
   color: rgba(0, 0, 0, 0.7);
 }
 
+header,
+header .title,
+header .arrow-down,
+#mosaic--contact {
+  color: #fff;
+}
+
+header .mosaic--divider,
+#mosaic--contact .mosaic--divider {
+  border-top: 1px solid rgba(230, 230, 230, 0.9);
+}
+
+.arrow-down i {
+  margin-top: 1.2em;
+  font-size: 1.1em;
+}
+
+.arrow-down {
+  color: #fff;
+}
+
+.arrow-down.dark,
+.arrow-down.dark:hover,
+.arrow-down.dark:focus {
+  color: rgba(0, 0, 0, 0.7);
+}
+
 .fa {
   font-size: 1.2em;
+}
+
+.icon-container {
+  margin-top: 1.2em;
+}
+
+.icon-container a i {
+  font-size: 1.2em;
+}
+
+.icon-container a:not(:first-child) {
+  margin-left: .7em;
 }
 
 .mosaic--divider {
@@ -50,7 +95,36 @@ footer div a i {
   font-weight: 700;
 }
 
+.subtitle:not(:last-child), .title:not(:last-child) {
+  margin-bottom: 0.25em;
+}
+
+#mosaic--contact a {
+  color: #ff8080;
+}
+
+#mosaic--contact a:hover,
+#mosaic--contact a:focus {
+  color: #ff1a1a;
+}
+
+
 ::selection {
   color: #fff;
   background-color: #000;
+}
+
+/* Images */
+#mosaic--hero,
+#mosaic--contact {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#mosaic--contact {
+  background-image: url('../img/bg-2.jpg');
+}
+
+#mosaic--hero {
+  background-image: url('../img/bg-1.jpg');
 }
