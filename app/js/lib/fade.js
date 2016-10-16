@@ -29,6 +29,7 @@ window.onload    = () => {
   const intro    = hero.children[2];
   const next     = hero.children[3];
 
+  // refactor
   setTimeout(() => {
     fadeIn(body, 10);
     setTimeout(() => {

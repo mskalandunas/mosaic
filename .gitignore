@@ -1,4 +1,6 @@
+app/audio
 .DS_Store
+build
 
 # Logs
 logs

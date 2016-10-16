@@ -15,7 +15,8 @@ const staticFiles = [
 
 const styleSheets = [
   'app/css/bulma.css',
-  'app/css/additional.css'
+  'app/css/additional.css',
+  'app/css/player.css'
 ];
 
 gulp.task('static:dev', () => {
