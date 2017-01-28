@@ -1,6 +1,6 @@
-app/audio
+src/audio
 .DS_Store
-build
+public
 
 # Logs
 logs

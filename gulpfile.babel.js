@@ -6,45 +6,44 @@ import concatCss from 'gulp-concat-css';
 import webpack from 'webpack-stream';
 
 const staticFiles = [
-  'app/**/*.html',
-  'app/**/*.ico',
-  'app/**/*.jpg',
-  'app/**/*.mp3',
-  'app/**/*.png'
+  'src/**/*.html',
+  'src/**/*.ico',
+  'src/**/*.jpg',
+  'src/**/*.mp3',
+  'src/**/*.svg',
+  'src/**/*.png'
 ];
 
 const styleSheets = [
-  'app/css/bulma.css',
-  'app/css/additional.css',
-  'app/css/player.css'
+  'src/css/style.css'
 ];
 
 gulp.task('static:dev', () => {
   gulp.src(staticFiles)
-  .pipe(gulp.dest(__dirname + '/build/'));
+  .pipe(gulp.dest(__dirname + '/public/'));
 });
 
 gulp.task('webpack:dev', () => {
-  return gulp.src('app/js/entry.js')
+  return gulp.src('src/js/app.js')
   .pipe(webpack({
     output: {
       filename: 'bundle.js'
     }
   }))
-  .pipe(gulp.dest('build/js/'));
+  .pipe(gulp.dest('public/js/'));
 });
 
 gulp.task('css:dev', () => {
   return gulp.src(styleSheets)
   .pipe(concatCss('main.css'))
   .pipe(cssNano())
-  .pipe(gulp.dest(__dirname + '/build/css'));
+  .pipe(gulp.dest(__dirname + '/public/css'));
 });
 
 gulp.task('watch:build', () => {
   gulp.watch(staticFiles, ['static:dev']);
   gulp.watch(styleSheets, ['css:dev']);
-  gulp.watch('app/**/*.js', ['webpack:dev']);
+  gulp.watch('src/**/*.js', ['webpack:dev']);
 });
 
 gulp.task('build', ['static:dev', 'webpack:dev', 'css:dev']);
