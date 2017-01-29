@@ -15,6 +15,8 @@ const staticFiles = [
 ];
 
 const styleSheets = [
+  'src/css/normalize.css',
+  'src/css/skeleton.css',
   'src/css/style.css'
 ];
 
