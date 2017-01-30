@@ -30,8 +30,17 @@ a {
   transition: all 250ms ease-in-out;
 }
 
+a:hover .long-arrow path {
+  fill: #ffc371;
+}
+
+footer p {
+  text-align: center;
+  font-size: 16px;
+  margin: 50px 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  /*font-family: 'Montserrat', sans-serif;*/
   font-family: 'Playfair Display', serif;
 }
 
@@ -63,6 +72,13 @@ section:first-of-type {
 
 section {
   padding: 100px 0;
+}
+
+svg path {
+  -moz-transition: all 250ms ease-in-out;
+  -webkit-transition: all 250ms ease-in-out;
+  -o-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
 
 .container {
@@ -120,6 +136,10 @@ p.content.low-width {
   background: -webkit-linear-gradient(bottom right, #FF5F6D, #FFC371);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.long-arrow {
+  width: 10px;
 }
 
 .vertical--divide {
