@@ -10,6 +10,7 @@ const staticFiles = [
   'src/**/*.ico',
   'src/**/*.jpg',
   'src/**/*.mp3',
+  'src/**/*.wav',
   'src/**/*.svg',
   'src/**/*.png'
 ];
@@ -17,7 +18,8 @@ const staticFiles = [
 const styleSheets = [
   'src/css/normalize.css',
   'src/css/skeleton.css',
-  'src/css/style.css'
+  'src/css/style.css',
+  'src/css/player.css'
 ];
 
 gulp.task('static:dev', () => {
