@@ -31,11 +31,21 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+  /*font-family: 'Montserrat', sans-serif;*/
+  font-family: 'Playfair Display', serif;
 }
 
 h1 {
-  font-size: 5.5em;
+  font-size: 6.5em;
+}
+
+h1.contact {
+  font-size: 6em;
+}
+
+h5 {
+  font-size: 2em;
+  text-align: right;
 }
 
 header {
@@ -68,6 +78,10 @@ p.content {
   margin-bottom: 30px;
 }
 
+p.content.low-width {
+  max-width: 400px;
+}
+
 .content--link {
   position: relative;
 }
@@ -98,6 +112,16 @@ p.content {
   background: #ffc371;
 }
 
+.fa-long-arrow-right:before {
+  margin-left: 10px;
+}
+
+.logo {
+  background: -webkit-linear-gradient(bottom right, #FF5F6D, #FFC371);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .vertical--divide {
   border-left: 2px solid #d4d4d4;
   height: 11em;
@@ -108,14 +132,25 @@ p.content {
   height: 2em;
 }
 
+.vertical--divide.short.bottom {
+  height: 2em;
+  margin: 9em 0 1em;
+}
+
 .vertical--divide.short.divide-orange {
   border-color: #ffc371;
-  margin-left: 30%;
+  margin: 3em 0 1em 30%;
+  height: 0.8em;
 }
 
 .vertical--divide.short.divide-red {
   height: 1em;
   border-color: #ff5f6d;
+}
+
+.vertical--divide.short.mosaic--works {
+  height: 3em;
+  margin: 3em 0 1em;
 }
 
 #mosaic--content {
