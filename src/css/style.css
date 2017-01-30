@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 6em;
+  font-size: 5.5em;
 }
 
 header {
@@ -101,6 +101,10 @@ p.content {
   border-left: 2px solid #d4d4d4;
   height: 11em;
   margin: 7em 0 1em;
+}
+
+.vertical--divide.short {
+  height: 2em;
 }
 
 #mosaic--content {
