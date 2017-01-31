@@ -19,7 +19,8 @@ const styleSheets = [
   'src/css/normalize.css',
   'src/css/skeleton.css',
   'src/css/style.css',
-  'src/css/player.css'
+  'src/css/player.css',
+  'src/css/svg-style.css'
 ];
 
 gulp.task('static:dev', () => {
