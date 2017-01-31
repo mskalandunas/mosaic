@@ -97,10 +97,14 @@ function next() {
   };
 
   if (!source.paused) {
-    play();
+    source.pause();
+    timeline.classList.toggle('active');
+    playButton.children[0].classList = '';
+    playButton.children[0].classList = 'fa fa-play';
   };
 
   source.load();
+  playhead.style.paddingLeft = '0px';
 };
 
 function play() {
