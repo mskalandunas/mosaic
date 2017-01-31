@@ -4,15 +4,19 @@ const _util_      = require(__dirname + '/utilities');
 const tracks      = require(__dirname + '/tracks');
 const album       = tracks.length;
 const node        = document.querySelector('.mosaic-player');
+const current     = node.children[0].children[0].children[0].children[0];
+const description = node.children[2];
 const duration    = node.children[0].children[0].children[3];
 const hover       = node.children[0].children[0].children[2].children[0];
 const nextButton  = node.children[0].children[0].children[1].children[2];
 const playButton  = node.children[0].children[0].children[1].children[1];
 const playhead    = node.children[0].children[0].children[2].children[0].children[0];
+const prevButton  = node.children[0].children[0].children[1].children[0];
 const source      = node.children[0].children[0].children[0];
 const timeline    = node.children[0].children[0].children[2];
-let timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
+const title       = node.children[1];
 let scrubber      = false;
+let timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
 
 function addHover(e) {
   let positionOffset = _util_.handleOffsetParent(timeline);
@@ -81,10 +85,7 @@ function movePlayhead(e) {
 };
 
 function next() {
-  let current     = source.children[0];
-  let count       = current.getAttribute('src')[6];
-  let title       = node.children[1];
-  let description = node.children[2];
+  let count = current.getAttribute('src')[6];
 
   if (count == album) {
     current.setAttribute('src', `audio/${tracks[0].src}.mp3`);
@@ -121,6 +122,29 @@ function play() {
   };
 };
 
+function previous() {
+  let count = current.getAttribute('src')[6];
+  if (count == 1) {
+    current.setAttribute('src', `audio/${tracks[album - 1].src}.mp3`);
+    title.innerHTML = tracks[album - 1].title;
+    description.innerHTML = tracks[album - 1].description;
+  } else {
+    current.setAttribute('src', `audio/${tracks[count - 2].src}.mp3`);
+    title.innerHTML = tracks[count - 2].title;
+    description.innerHTML = tracks[count - 2].description;
+  };
+
+  if (!source.paused) {
+    source.pause();
+    timeline.classList.toggle('active');
+    playButton.children[0].classList = '';
+    playButton.children[0].classList = 'fa fa-play';
+  };
+
+  source.load();
+  playhead.style.paddingLeft = '0px';
+};
+
 function removeHover() {
   hover.style.width = '0px';
 };
@@ -142,6 +166,7 @@ function updateTime() {
 nextButton.addEventListener('click', next);
 playButton.addEventListener('click', play);
 playhead.addEventListener('mousedown', mouseDown);
+prevButton.addEventListener('click', previous);
 source.addEventListener('durationchange', returnDuration);
 source.addEventListener('timeupdate', updateTime);
 source.addEventListener('timeupdate', handlePlayhead);
