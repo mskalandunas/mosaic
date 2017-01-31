@@ -85,7 +85,8 @@ function movePlayhead(e) {
 };
 
 function next() {
-  let count = current.getAttribute('src')[6];
+  let count     = current.getAttribute('src')[6];
+  let wasPaused = false;
 
   if (count == album) {
     current.setAttribute('src', `audio/${tracks[0].src}.mp3`);
@@ -97,14 +98,16 @@ function next() {
     description.innerHTML = tracks[count].description;
   };
 
-  if (!source.paused) {
-    source.pause();
-    timeline.classList.toggle('active');
-    playButton.children[0].classList = '';
-    playButton.children[0].classList = 'fa fa-play';
+  if (source.paused) {
+    wasPaused = true;
   };
 
   source.load();
+
+  if (!wasPaused) {
+    source.play();
+  };
+
   playhead.style.paddingLeft = '0px';
 };
 
@@ -123,7 +126,9 @@ function play() {
 };
 
 function previous() {
-  let count = current.getAttribute('src')[6];
+  let count     = current.getAttribute('src')[6];
+  let wasPaused = false;
+
   if (count == 1) {
     current.setAttribute('src', `audio/${tracks[album - 1].src}.mp3`);
     title.innerHTML = tracks[album - 1].title;
@@ -134,14 +139,16 @@ function previous() {
     description.innerHTML = tracks[count - 2].description;
   };
 
-  if (!source.paused) {
-    source.pause();
-    timeline.classList.toggle('active');
-    playButton.children[0].classList = '';
-    playButton.children[0].classList = 'fa fa-play';
+  if (source.paused) {
+    wasPaused = true;
   };
 
   source.load();
+
+  if (!wasPaused) {
+    source.play();
+  };
+
   playhead.style.paddingLeft = '0px';
 };
 
