@@ -1,19 +1,16 @@
 /* Audio */
+
+/* Font Awesome */
 .fa {
   color: #fff;
+  cursor: pointer;
 }
 
-.fa-play:hover {
-  color: #00995c;
-}
-
-.fa-pause:hover {
-  color: #cccccc;
-}
+/* FA End */
 
 .mosaic-player,.mosaic-audio {
   width: 100%;
-  margin: 25px auto;
+  margin: 25px auto 0;
 }
 
 .mosaic-gui {
@@ -44,7 +41,7 @@
   margin-left: 20px;
 }
 
-.mosaic-play,.mosaic-pause {
+.mosaic-play,.mosaic-pause,.mosaic-previous,.mosaic-next {
   width: 14px;
   height: 59px;
   display: inline-block;
@@ -96,6 +93,14 @@
   margin-top: 28px;
 }
 
+.mosaic-progress.active {
+  background-color: #ffc371;
+  -moz-transition: all 250ms ease-in-out;
+  -webkit-transition: all 250ms ease-in-out;
+  -o-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+}
+
 .mosaic-play-bar {
   width: 0;
   top: 1px;
@@ -106,6 +111,13 @@
 
 .mosaic-previous svg {
   width: 15px;
+}
+
+.mosaic-title, .mosaic-description {
+  -moz-transition: all 250ms ease-in-out;
+  -webkit-transition: all 250ms ease-in-out;
+  -o-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
 
 /*@media (max-width: 1150px) {
