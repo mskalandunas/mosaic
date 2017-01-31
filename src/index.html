@@ -19,7 +19,7 @@
   <meta property="og:image:width" content="1113">
   <meta property="og:image:height" content="493">
   <meta property="og:url" content="http://mosaicmusic.io/">
-  <title>[ m o s • a i c ]</title>
+  <title>m o s ––––– a i c</title>
   <link href="img/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href='https://fonts.googleapis.com/css?family=Robot|Montserrat|Playfair+Display' rel='stylesheet' type='text/css'>
@@ -105,31 +105,37 @@
           <div class="vertical--divide short divide-orange"></div>
 
           <div>
-            <div className="mosaic-player">
-              <div className="mosaic-type-single">
-                <div className="mosaic-gui mosaic-interface mosaic-player">
+            <div class="mosaic-player">
+              <div class="mosaic-type-single">
+                <div class="mosaic-gui mosaic-interface mosaic-player">
                   <audio preload="auto">
                     <source src="audio/1.wav"/>
                   </audio>
-                  <ul className="mosaic-controls">
-                    <li className="play-button-container">
-                      <a className="mosaic-play">
-                        <i className="fa fa-play"></i>
+                  <ul class="mosaic-controls">
+                    <li class="play-button-container">
+                      <a class="mosaic-previous">
+                        <i class="fa fa-backward"></i>
+                      </a>
+                      <a class="mosaic-play">
+                        <i class="fa fa-play"></i>
+                      </a>
+                      <a class="mosaic-next">
+                        <i class="fa fa-forward"></i>
                       </a>
                     </li>
                   </ul>
-                  <div className="mosaic-progress">
-                    <div className="mosaic-seek-bar">
-                      <div className="mosaic-play-bar"></div>
+                  <div class="mosaic-progress">
+                    <div class="mosaic-seek-bar">
+                      <div class="mosaic-play-bar"></div>
                     </div>
                   </div>
-                  <div className="mosaic-time-holder">
+                  <div class="mosaic-time-holder">
                     <span></span>
                   </div>
                 </div>
               </div>
             </div>
-            <p>{this.props.desc}</p>
+            <p></p>
           </div>
 
         </div>

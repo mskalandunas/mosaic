@@ -1,6 +1,6 @@
 /* Audio */
-.fa-play {
-  color: #6ac19e;
+.fa {
+  color: #fff;
 }
 
 .fa-play:hover {
@@ -30,7 +30,6 @@
   padding: 0;
   margin: 0;
   list-style: none;
-  font-family: "FontAwesome";
 }
 
 .mosaic-controls li {
@@ -39,6 +38,10 @@
 
 .mosaic-controls a {
   color: rgba(0, 0, 0, 0.6);
+}
+
+.mosaic-play, .mosaic-next {
+  margin-left: 20px;
 }
 
 .mosaic-play,.mosaic-pause {
@@ -84,11 +87,11 @@
 .mosaic-progress {
   overflow: hidden;
   position: absolute;
-  left: 20px;
+  left: 100px;
   top: 0;
-  width: calc(100% - 115px);
+  width: calc(100% - 100px);
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 1);
   height: 2px;
   margin-top: 28px;
 }
@@ -99,6 +102,10 @@
   height: 2px;
   background-color: rgba(255,255,255,1);
   transition: 0.1s ease;
+}
+
+.mosaic-previous svg {
+  width: 15px;
 }
 
 /*@media (max-width: 1150px) {

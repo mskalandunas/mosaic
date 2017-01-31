@@ -128,10 +128,6 @@ p.content.low-width {
   background: #ffc371;
 }
 
-.fa-long-arrow-right:before {
-  margin-left: 10px;
-}
-
 .logo {
   background: -webkit-linear-gradient(bottom right, #FF5F6D, #FFC371);
   -webkit-background-clip: text;
@@ -140,6 +136,7 @@ p.content.low-width {
 
 .long-arrow {
   width: 10px;
+  margin-left: 10px;
 }
 
 .vertical--divide {
