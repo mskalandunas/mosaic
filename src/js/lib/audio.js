@@ -5,14 +5,13 @@ const _util_ = require(__dirname + '/utilities');
 class Ao {
   constructor(node) {
     this.node          = node;
-    console.log(node);
-    this.duration      = node.children[4];
-    this.hover         = node.children[2].children[0];
-    this.playButton    = node.children[1].children[0].children[0].children[0];
-    this.playhead      = node.children[2].children[0].children[0];
+    this.duration      = node.children[0].children[0].children[3];
+    this.hover         = node.children[0].children[0].children[2].children[0];
+    this.playButton    = node.children[0].children[0].children[1].children[1];
+    this.playhead      = node.children[0].children[0].children[2].children[0].children[0];
     this.scrubber      = false;
-    this.source        = node.children[0];
-    this.timeline      = node.children[2];
+    this.source        = node.children[0].children[0].children[0];
+    this.timeline      = node.children[0].children[0].children[2];
     this.timelineWidth = this.timeline.offsetWidth - this.playhead.offsetWidth;
 
     this.playButton.addEventListener('click', this.play.bind(this));
@@ -97,12 +96,12 @@ class Ao {
   play() {
     if (this.source.paused) {
       this.source.play();
-      this.playButton.classList = '';
-      this.playButton.classList = 'fa fa-pause';
+      this.playButton.children[0].classList = '';
+      this.playButton.children[0].classList = 'fa fa-pause';
     } else {
       this.source.pause();
-      this.playButton.classList = '';
-      this.playButton.classList = 'fa fa-play';
+      this.playButton.children[0].classList = '';
+      this.playButton.children[0].classList = 'fa fa-play';
     };
   };
 

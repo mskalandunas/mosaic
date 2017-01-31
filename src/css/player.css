@@ -62,12 +62,12 @@
   width: 0;
   top: 1px;
   height: 2px;
-  background-color: rgba(255,255,255,.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .mosaic-title ul, .mosaic-time-holder {
-  font-family: 'Montserrat', sans-serif;
-  color: rgba(0, 0, 0, 0.6);
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
   font-size: 12px;
   line-height: 30px;
   position: absolute;
@@ -89,7 +89,7 @@
   position: absolute;
   left: 100px;
   top: 0;
-  width: calc(100% - 100px);
+  width: calc(100% - 200px);
   cursor: pointer;
   background-color: rgba(255, 255, 255, 1);
   height: 2px;
@@ -100,7 +100,7 @@
   width: 0;
   top: 1px;
   height: 2px;
-  background-color: rgba(255,255,255,1);
+  background-color: #2b2b2b;
   transition: 0.1s ease;
 }
 

@@ -27,7 +27,6 @@ const _util_ = {
   },
 
   handleOffsetParent:(node) => {
-    let p = container.getBoundingClientRect();
     let n = node;
     let o = 0;
 
@@ -36,7 +35,7 @@ const _util_ = {
       n = n.offsetParent;
     };
 
-    return o + p.left;
+    return o;
   }
 };
 
