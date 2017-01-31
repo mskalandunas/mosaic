@@ -115,11 +115,15 @@ function play() {
   if (source.paused) {
     source.play();
     timeline.classList.toggle('active');
+    nextButton.classList.toggle('active');
+    prevButton.classList.toggle('active');
     playButton.children[0].classList = '';
     playButton.children[0].classList = 'fa fa-pause';
   } else {
     source.pause();
     timeline.classList.toggle('active');
+    nextButton.classList.toggle('active');
+    prevButton.classList.toggle('active');
     playButton.children[0].classList = '';
     playButton.children[0].classList = 'fa fa-play';
   };

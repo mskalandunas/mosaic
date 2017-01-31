@@ -4,6 +4,16 @@
 .fa {
   color: #fff;
   cursor: pointer;
+  -moz-transition: all 250ms ease-in-out;
+  -webkit-transition: all 250ms ease-in-out;
+  -o-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+}
+
+.fa-pause,
+.fa-play:hover,
+.fa-play:active {
+  color: #ffc371;
 }
 
 /* FA End */
@@ -101,6 +111,11 @@
   transition: all 250ms ease-in-out;
 }
 
+.mosaic-next.active i,
+.mosaic-previous.active i {
+  color: #ffc371;
+}
+
 .mosaic-play-bar {
   width: 0;
   top: 1px;
@@ -114,10 +129,10 @@
 }
 
 .mosaic-title, .mosaic-description {
-  -moz-transition: all 250ms ease-in-out;
-  -webkit-transition: all 250ms ease-in-out;
-  -o-transition: all 250ms ease-in-out;
-  transition: all 250ms ease-in-out;
+  -moz-transition: opacity 250ms ease-in-out;
+  -webkit-transition: opacity 250ms ease-in-out;
+  -o-transition: opacity 250ms ease-in-out;
+  transition: opacity 250ms ease-in-out;
 }
 
 /*@media (max-width: 1150px) {

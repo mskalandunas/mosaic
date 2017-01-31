@@ -61,15 +61,6 @@ h6 {
   font-size: 1.5em;
 }
 
-header {
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0);
-}
-
-header p {
-  text-align: center;
-}
-
 section:first-of-type {
   padding: 150px 0 100px;
 }
@@ -78,7 +69,9 @@ section {
   padding: 100px 0;
 }
 
-svg path {
+svg path,
+svg rect,
+svg polygon {
   -moz-transition: all 250ms ease-in-out;
   -webkit-transition: all 250ms ease-in-out;
   -o-transition: all 250ms ease-in-out;
@@ -110,6 +103,10 @@ p.content.low-width {
   color: #ffc371;
 }
 
+.content--link:hover i {
+  color: #ffc371;
+}
+
 .content--link:after {
   position: absolute;
   top: -5px;
@@ -132,6 +129,18 @@ p.content.low-width {
   background: #ffc371;
 }
 
+.content--link .fa {
+  color: #808080;
+}
+
+.header-social {
+  text-align: right;
+}
+
+.header-social a:not(:first-child) {
+  margin-left: 15px;
+}
+
 .logo {
   background: -webkit-linear-gradient(bottom right, #FF5F6D, #FFC371);
   -webkit-background-clip: text;
@@ -141,6 +150,14 @@ p.content.low-width {
 .long-arrow {
   width: 10px;
   margin-left: 10px;
+}
+
+.mosaic--logo:hover svg g .mosaic--orange {
+  fill: #ffc371;
+}
+
+.mosaic--logo:hover svg g .mosaic--red {
+  fill: #ff5f6d;
 }
 
 .vertical--divide {
@@ -155,7 +172,7 @@ p.content.low-width {
 
 .vertical--divide.short.bottom {
   height: 2em;
-  margin: 9em 0 1em;
+  margin: 10.5em 0 1em;
 }
 
 .vertical--divide.short.divide-orange {
