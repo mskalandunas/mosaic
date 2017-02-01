@@ -216,6 +216,15 @@ p.content.low-width {
   margin: 3em 0 1em;
 }
 
+.works--img {
+  width: 100%;
+  margin-top: calc(12% - 7px);
+}
+
+.works--a:hover {
+  filter: grayscale(75%);
+}
+
 #mosaic--content {
   width: 5em;
   float: left;
