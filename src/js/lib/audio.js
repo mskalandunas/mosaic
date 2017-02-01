@@ -170,9 +170,13 @@ function returnDuration() {
 function updateTime() {
   duration.innerHTML = `${_util_.handleTime(source.currentTime)} / ${_util_.handleTime(source.duration)}`;
 
-  if (source.currentTime === source.duration) {
-    playButton.classList = '';
-    playButton.classList = 'fa fa-play';
+  if (source.currentTime === source.duration) {;
+    next();
+    play();
+    timeline.classList.toggle('active');
+    nextButton.classList.toggle('active');
+    prevButton.classList.toggle('active');
+    playButton.classList.toggle('active');
   };
 };
 

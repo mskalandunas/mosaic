@@ -179,6 +179,10 @@
   transition: opacity 250ms ease-in-out;
 }
 
+.mosaic-type-single {
+  margin-bottom: 10px;
+}
+
 /*@media (max-width: 1150px) {
   .mosaic-time-holder {
     opacity: 0;

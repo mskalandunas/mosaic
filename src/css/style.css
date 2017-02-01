@@ -73,6 +73,11 @@ header p {
   margin: 0;
 }
 
+img.img--main {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
 section:first-of-type {
   padding: 200px 0 100px;
 }
