@@ -2,7 +2,6 @@
 [Listen.](http://mosaicmusic.io/)
 
 ####todo
-1.  Compress imgs
-2.  Animate p/h6 in player
-3.  Get high pagespeed score
-4.  Add hover text describing projects
+1.  Animate p/h6 in player
+2.  Get high pagespeed score
+3.  Add hover text describing projects
