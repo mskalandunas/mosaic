@@ -13,10 +13,11 @@ const playButton  = node.children[0].children[0].children[1].children[1];
 const playhead    = node.children[0].children[0].children[2].children[0].children[0];
 const prevButton  = node.children[0].children[0].children[1].children[0];
 const source      = node.children[0].children[0].children[0];
+const sub         = 'px';
 const timeline    = node.children[0].children[0].children[2];
 const title       = node.children[1];
 let scrubber      = false;
-let timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
+var timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
 
 function addHover(e) {
   let positionOffset = _util_.handleOffsetParent(timeline);
@@ -48,6 +49,15 @@ function handleHover() {
 function handlePlayhead() {
   let playPercent = timelineWidth * (source.currentTime / source.duration);
   playhead.style.paddingLeft = `${playPercent}px`;
+};
+
+function handleResize() {
+  let padding = playhead.style.paddingLeft;
+  let p;
+
+  padding === '' ? p = 0 : p = parseInt(padding.substring(0, padding.length - 2));
+  timelineWidth = (timeline.offsetWidth - playhead.offsetWidth) + p;
+  handlePlayhead();
 };
 
 function mouseDown() {
@@ -190,3 +200,4 @@ source.addEventListener('timeupdate', handlePlayhead);
 timeline.addEventListener('mousedown', mouseDown);
 timeline.addEventListener('mouseover', handleHover);
 window.addEventListener('mouseup', mouseUp);
+window.addEventListener('resize', handleResize);

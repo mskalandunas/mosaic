@@ -170,6 +170,7 @@
 
 .mosaic-description {
   text-align: justify;
+  margin-bottom: 0;
 }
 
 .mosaic-title, .mosaic-description {
@@ -182,13 +183,3 @@
 .mosaic-type-single {
   margin-bottom: 10px;
 }
-
-/*@media (max-width: 1150px) {
-  .mosaic-time-holder {
-    opacity: 0;
-  }
-
-  .mosaic-title ul {
-    font-size: 10px;
-  }
-}*/

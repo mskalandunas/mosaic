@@ -1,7 +1,5 @@
 'use strict';
 
-const container = document.querySelector('#player-container');
-
 const _util_ = {
   handleTime:(duration) => {
     let sec_num = parseInt(duration, 10);
