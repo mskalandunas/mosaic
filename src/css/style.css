@@ -234,6 +234,7 @@ p.content.low-width {
 
 .works--a:hover img {
   filter: grayscale(75%);
+  opacity: .5;
 }
 
 .works--a:hover div:after {
