@@ -208,8 +208,36 @@ p.content.low-width {
   margin: 3em 0 1em;
 }
 
+.works--a div {
+  position: relative;
+}
+
+.works--a .works--project:after {
+  position: absolute;
+  font-size: 20px;
+  content: '';
+  font-family: 'Montserrat';
+  font-weight: 700;
+  display: block;
+  white-space: pre;
+  color: #fff;
+  opacity: 0;
+  top: 50%;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  -moz-transition: all 300ms ease-in-out;
+  -webkit-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
 .works--a:hover img {
   filter: grayscale(75%);
+}
+
+.works--a:hover div:after {
+  opacity: 1;
 }
 
 .works--img {
@@ -217,9 +245,59 @@ p.content.low-width {
   margin-top: calc(12% - 7px);
 }
 
-a:hover div .works--text {
-  opacity: 1;
-  color: #fff;
+.works--a:hover .works--project.reel:after {
+  top: 48%;
+  content: 'Audio/Video Reel';
+}
+
+.works--a:hover .works--project.mable:after {
+  top: 32%;
+  content: 'Mable: The Journey \a • \a Wwise Layering';
+}
+
+.works--a:hover .works--project.beggar:after {
+  top: 37%;
+  content: "Beggar's Ride \a • \a Additional Music";
+}
+
+.works--a:hover .works--project.son:after {
+  top: 35%;
+  content: "Son of Nor \a • \a Music";
+}
+
+.works--a:hover .works--project.hero:after {
+  top: 42%;
+  content: 'Hero of Many \a • \a Audio Replacement';
+}
+
+.works--a:hover .works--project.pantheon:after {
+  top: 37%;
+  content: 'Pantheon \a • \a Music';
+}
+
+.works--a:hover .works--project.omg:after {
+  top: 35%;
+  content: "Oh My Giraffe \a • \a Sound Design & Music";
+}
+
+.works--a:hover .works--project.lk:after {
+  top: 44%;
+  content: "Last Knight \a • \a Audio Replacement";
+}
+
+.works--a:hover .works--project.bleat:after {
+  top: 40%;
+  content: "Bleat \a • \a Sound Design & Music";
+}
+
+.works--a:hover .works--project.lt:after {
+  top: 40%;
+  content: "The Last Tinker \a • \a Additional Music";
+}
+
+.works--a:hover .works--project.mv:after {
+  top: 32%;
+  content: "Monument Valley \a • \a Audio Replacement";
 }
 
 #mosaic--content {

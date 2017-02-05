@@ -171,13 +171,7 @@
 .mosaic-description {
   text-align: justify;
   margin-bottom: 0;
-}
-
-.mosaic-title, .mosaic-description {
-  -moz-transition: opacity 250ms ease-in-out;
-  -webkit-transition: opacity 250ms ease-in-out;
-  -o-transition: opacity 250ms ease-in-out;
-  transition: opacity 250ms ease-in-out;
+  font-family: 'Roboto';
 }
 
 .mosaic-type-single {
