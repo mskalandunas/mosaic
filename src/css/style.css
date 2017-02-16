@@ -258,52 +258,52 @@ p.content.low-width {
 
 .works--a:hover .works--project.mable:after {
   top: 48%;
-  content: 'Mable: The Journey';
+  content: 'Music & Implementation';
 }
 
 .works--a:hover .works--project.beggar:after {
   top: 48%;
-  content: 'The Beggar\'s Ride';
+  content: 'Additional Music';
 }
 
 .works--a:hover .works--project.son:after {
   top: 48%;
-  content: "Son of Nor";
+  content: 'Music';
 }
 
 .works--a:hover .works--project.hero:after {
   top: 48%;
-  content: 'Hero of Many';
+  content: 'Audio Replacement';
 }
 
 .works--a:hover .works--project.pantheon:after {
   top: 48%;
-  content: 'Pantheon';
+  content: 'Music';
 }
 
 .works--a:hover .works--project.omg:after {
   top: 48%;
-  content: 'Oh My Giraffe';
+  content: 'Sound & Music';
 }
 
 .works--a:hover .works--project.lk:after {
   top: 48%;
-  content: 'Last Knight';
+  content: 'Audio Replacement';
 }
 
 .works--a:hover .works--project.bleat:after {
   top: 48%;
-  content: 'Bleat';
+  content: 'Sound & Music';
 }
 
 .works--a:hover .works--project.lt:after {
   top: 48%;
-  content: 'The Last Tinker';
+  content: 'Additional Music';
 }
 
 .works--a:hover .works--project.mv:after {
   top: 48%;
-  content: 'Monument Valley';
+  content: 'Audio Replacement';
 }
 
 #mosaic--content {
