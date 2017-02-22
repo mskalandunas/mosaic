@@ -142,6 +142,21 @@ p.content.low-width {
   color: #808080;
 }
 
+.content--link.email::selection {
+  background-color: #ff5f6d;
+  color: #fff;
+}
+
+.content--link.email:hover {
+  color: #ff5f6d;
+  cursor: pointer;
+}
+
+.content--link.email:hover:after {
+  width: 99%;
+  background: #ff5f6d;
+}
+
 .header-social a:not(:first-child) {
   margin-left: 15px;
 }
