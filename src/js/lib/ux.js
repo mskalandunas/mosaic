@@ -1,6 +1,6 @@
 'use strict';
 
-const email = document.querySelector('.content--link.email');
+const email = document.querySelector('.email');
 
 email.addEventListener('click', () => {
   const select = window.getSelection();
