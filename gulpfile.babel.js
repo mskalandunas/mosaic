@@ -12,7 +12,8 @@ const staticFiles = [
   'src/**/*.mp3',
   'src/**/*.wav',
   'src/**/*.svg',
-  'src/**/*.png'
+  'src/**/*.png',
+  'src/**/*.pdf'
 ];
 
 const styleSheets = [
