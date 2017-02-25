@@ -143,13 +143,16 @@ p.content.low-width {
 }
 
 .email:hover {
-  color: #ff5f6d;
   cursor: pointer;
 }
 
 .email::selection {
   background-color: rgba(255, 95, 109, 0.5);
   color: #fff;
+}
+
+.email.active:after {
+  width: 0%;
 }
 
 .header-social a:not(:first-child) {
@@ -236,103 +239,6 @@ p.content.low-width {
 
 .video-container:not(first) {
   margin-top: 4em;
-}
-
-.works--a div {
-  position: relative;
-}
-
-.works--a .works--project:after {
-  position: absolute;
-  font-size: 20px;
-  content: '';
-  font-family: 'Roboto';
-  font-weight: 700;
-  display: block;
-  white-space: pre;
-  color: #fff;
-  opacity: 0;
-  top: 50%;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  -moz-transition: all 300ms ease-in-out;
-  -webkit-transition: all 300ms ease-in-out;
-  -o-transition: all 300ms ease-in-out;
-  transition: all 300ms ease-in-out;
-}
-
-.works--a:hover img {
-  filter: grayscale(75%);
-  opacity: .5;
-}
-
-.works--a:hover div:after {
-  opacity: 1;
-}
-
-.works--img {
-  margin-top: calc(12% - 7px);
-}
-
-.works--a:hover .works--project.medium:after {
-  top: 48%;
-  content: 'Writing';
-}
-
-.works--a:hover .works--project.reel:after {
-  top: 48%;
-  content: 'Audio/Video Reel';
-}
-
-.works--a:hover .works--project.mable:after {
-  top: 48%;
-  content: 'Music & Implementation';
-}
-
-.works--a:hover .works--project.beggar:after {
-  top: 48%;
-  content: 'Additional Music';
-}
-
-.works--a:hover .works--project.son:after {
-  top: 48%;
-  content: 'Music';
-}
-
-.works--a:hover .works--project.hero:after {
-  top: 48%;
-  content: 'Audio Replacement';
-}
-
-.works--a:hover .works--project.pantheon:after {
-  top: 48%;
-  content: 'Music';
-}
-
-.works--a:hover .works--project.omg:after {
-  top: 48%;
-  content: 'Sound & Music';
-}
-
-.works--a:hover .works--project.lk:after {
-  top: 48%;
-  content: 'Audio Replacement';
-}
-
-.works--a:hover .works--project.bleat:after {
-  top: 48%;
-  content: 'Sound & Music';
-}
-
-.works--a:hover .works--project.lt:after {
-  top: 48%;
-  content: 'Additional Music';
-}
-
-.works--a:hover .works--project.mv:after {
-  top: 48%;
-  content: 'Audio Replacement';
 }
 
 #mosaic--content {

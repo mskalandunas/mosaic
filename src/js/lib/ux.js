@@ -8,4 +8,11 @@ email.addEventListener('click', () => {
 
   range.selectNodeContents(email);
   select.addRange(range);
+  email.classList.add('active');
+});
+
+email.addEventListener('mouseout', () => {
+  if (email.className.includes('active')) {
+    email.classList.remove('active');
+  };
 });
