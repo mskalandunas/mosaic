@@ -4,7 +4,7 @@ const tracks = [
   {
     'src'         : '1',
     'title'       : '"Through the Sunken Glades"',
-    'description' : 'After some time away from my instruments, I created <em>Through the Sunken Glades</em> to showcase some of my favorite sample-based VSTs– those of <a class="content--link" href="http://embertone.com/" target="_blank" title="Embertone">Embertone</a> &amp; <a class="content--link" href="https://soundiron.com/" target="_blank" title="Soundiron">Soundiron</a>.  This piece in particular features Embertone flutes, their mountain dulcimer, and Soundiron\'s Noah Bells.'
+    'description' : 'Inspired by games like <em class="logo">Ori and the Blind Forest</em> and <em class="logo">Seasons After Fall</em>.  I wanted to bring to life all of the woodland creatures, plants, and little spirits, so I used exotic winds and percussion from both <a class="content--link" href="http://embertone.com/" target="_blank" title="Embertone">Embertone</a> and <a class="content--link" href="https://soundiron.com/" target="_blank" title="Soundiron">Soundiron</a> to paint the proper picture.  Strings, dulcimer, harp, and various synths/sound design as well.'
   },
   {
     'src'         : '2',
