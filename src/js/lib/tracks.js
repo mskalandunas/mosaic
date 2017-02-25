@@ -19,7 +19,7 @@ const tracks = [
   {
     'src'         : '4',
     'title'       : '"Breeze"',
-    'description' : 'Relaxing wind across Scottish cliffside plateaus, and the faint sound of chimes in the distance.  <em>Breeze</em> accompanies the player in their quest to herd sheep with a trusting (and unintentionally goofy) border collie.  Live guitar, <a class="content--link" href="https://soniccharge.com/synplant" target="_blank" title="Synplant">Synplant</a>, upright bass, instruments from the <a class="content--link" href="http://www.fbpsound.com/The-Toyshop-Sample-Library" target="_blank" title="Toyshop Sample Library">Toyshop Library</a>, and various synths.'
+    'description' : 'Relaxing wind across Scottish cliffside plateaus, and the faint sound of chimes in the distance.  <em class="logo">Breeze</em> accompanies the player in their quest to herd sheep with a trusting (and unintentionally goofy) border collie in <em class="logo">Bleat!</em>.  Live guitar, <a class="content--link" href="https://soniccharge.com/synplant" target="_blank" title="Synplant">Synplant</a>, upright bass, instruments from the <a class="content--link" href="http://www.fbpsound.com/The-Toyshop-Sample-Library" target="_blank" title="Toyshop Sample Library">Toyshop Library</a>, and various synths.'
   },
   {
     'src'         : '5',
