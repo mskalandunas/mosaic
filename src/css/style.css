@@ -253,6 +253,10 @@ p.content.low-width {
 }
 
 @media screen and (max-width: 700px) {
+  .credits .content {
+    font-size: 9px;
+  }
+
   .vertical--divide.short.bottom.works {
     display: none;
   }
