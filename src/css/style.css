@@ -36,6 +36,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 6.5em;
+  text-align: right;
 }
 
 h1.contact {
@@ -193,7 +194,7 @@ p.content.low-width {
 .vertical--divide {
   border-left: 2px solid #d4d4d4;
   height: 11em;
-  margin: 7em 0 1em;
+  margin: 8em 0 1em;
 }
 
 .vertical--divide.short {
@@ -253,11 +254,22 @@ p.content.low-width {
 }
 
 @media screen and (max-width: 700px) {
+  h1 {
+    text-align: left;
+    font-size: 5.5em;
+  }
+
   .credits .content {
     font-size: 9px;
   }
 
   .vertical--divide.short.bottom.works {
     display: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .credits .content {
+    font-size: 8.9px;
   }
 }
