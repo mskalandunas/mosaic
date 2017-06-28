@@ -254,14 +254,11 @@ p.content.low-width {
 }
 
 @media screen and (max-width: 700px) {
-  h1 {
+  h1, h1.contact {
     text-align: left;
-    font-size: 5.5em;
+    font-size: 4.5em;
   }
 
-/*  .credits .content {
-    font-size: 9px;
-  }*/
   .credits .hide {
     display: none;
   }
@@ -269,10 +266,21 @@ p.content.low-width {
   .vertical--divide.short.bottom.works {
     display: none;
   }
+
+  .vertical--divide {
+    height: 6em;
+    margin: 4em 0 1em;
+  }
 }
 
 @media screen and (max-width: 700px) {
   .credits .hide {
     display: none;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .container {
+    width: 90%;
   }
 }
