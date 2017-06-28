@@ -55,7 +55,7 @@ function handleResize() {
   let padding = playhead.style.paddingLeft;
   let p;
 
-  padding === '' ? p = 0 : p = parseInt(padding.substring(0, padding.length - 2));
+  !padding ? p = 0 : p = parseInt(padding.substring(0, padding.length - 2));
   timelineWidth = (timeline.offsetWidth - playhead.offsetWidth) + p;
   handlePlayhead();
 };
@@ -66,7 +66,7 @@ function mouseDown() {
 };
 
 function mouseUp(e) {
-  if (scrubber === false) {
+  if (!scrubber) {
     return;
   };
 
