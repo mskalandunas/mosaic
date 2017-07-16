@@ -1,203 +1,208 @@
 'use strict';
 
-const _util_      = require(__dirname + '/utilities');
-const tracks      = require(__dirname + '/tracks');
-const album       = tracks.length;
-const node        = document.querySelector('.mosaic-player');
-const current     = node.children[0].children[0].children[0].children[0];
-const description = node.children[2];
-const duration    = node.children[0].children[0].children[3];
-const hover       = node.children[0].children[0].children[2].children[0];
-const nextButton  = node.children[0].children[0].children[1].children[2];
-const playButton  = node.children[0].children[0].children[1].children[1];
-const playhead    = node.children[0].children[0].children[2].children[0].children[0];
-const prevButton  = node.children[0].children[0].children[1].children[0];
-const source      = node.children[0].children[0].children[0];
-const sub         = 'px';
-const timeline    = node.children[0].children[0].children[2];
-const title       = node.children[1];
-let scrubber      = false;
-var timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
+const _util_ = require(__dirname + '/utilities');
 
-function addHover(e) {
-  let positionOffset = _util_.handleOffsetParent(timeline);
-  let newMargLeft = e.pageX - positionOffset;
+class Audio {
+    constructor(node, tracks) {
+        this.node          = node;
+        this.tracks        = tracks;
+        this.current       = this.node.querySelector('source');
+        this.description   = this.node.querySelector('.mosaic-description');
+        this.duration      = this.node.querySelector('.mosaic-time-holder');
+        this.hover         = this.node.querySelector('.mosaic-seek-bar');
+        this.nextButton    = this.node.querySelector('.mosaic-next');
+        this.playButton    = this.node.querySelector('.mosaic-play');
+        this.playhead      = this.node.querySelector('.mosaic-play-bar');
+        this.prevButton    = this.node.querySelector('.mosaic-previous');
+        this.scrubber      = false;
+        this.source        = this.node.querySelector('audio');
+        this.sub           = 'px';
+        this.timeline      = this.node.querySelector('.mosaic-progress');
+        this.timelineWidth = this.timeline.offsetWidth - this.playhead.offsetWidth;
+        this.title         = this.node.querySelector('.mosaic-title');
 
-  if (newMargLeft >= 0 && newMargLeft <= timelineWidth) {
-    hover.style.width = `${newMargLeft}px`;
-  };
+        this.nextButton.addEventListener('click', this.next.bind(this));
+        this.playButton.addEventListener('click', this.play.bind(this));
+        this.playhead.addEventListener('mousedown', this.mouseDown.bind(this));
+        this.prevButton.addEventListener('click', this.previous.bind(this));
+        this.source.addEventListener('durationchange', this.returnDuration.bind(this));
+        this.source.addEventListener('timeupdate', this.updateTime.bind(this));
+        this.source.addEventListener('timeupdate', this.handlePlayhead.bind(this));
+        this.timeline.addEventListener('mousedown', this.mouseDown.bind(this));
+        this.timeline.addEventListener('mouseover', this.handleHover.bind(this));
+        window.addEventListener('mouseup', this.mouseUp.bind(this));
+        window.addEventListener('resize', this.handleResize.bind(this));
+    };
 
-  if (newMargLeft < 0) {
-    hover.style.width = '0px';
-  };
+    addHover(e) {
+        let positionOffset = _util_.handleOffsetParent(this.timeline);
+        let newMargLeft    = e.pageX - positionOffset;
 
-  if (newMargLeft > timelineWidth) {
-    hover.style.width = `${timelineWidth}px`;
-  };
-};
+        if (newMargLeft >= 0 && newMargLeft <= this.timelineWidth) {
+            this.hover.style.width = `${newMargLeft}px`;
+        };
 
-function handleClick(e) {
-  let positionOffset = _util_.handleOffsetParent(timeline);
-  return (e.pageX - positionOffset) / timelineWidth;
-};
+        if (newMargLeft < 0) {
+            this.hover.style.width = '0px';
+        };
 
-function handleHover() {
-  timeline.addEventListener('mousemove', addHover, false);
-  timeline.addEventListener('mouseout', removeHover, false);
-};
+        if (newMargLeft > this.timelineWidth) {
+            this.hover.style.width = `${this.timelineWidth}px`;
+        };
+    };
 
-function handlePlayhead() {
-  let playPercent = timelineWidth * (source.currentTime / source.duration);
-  playhead.style.paddingLeft = `${playPercent}px`;
-};
+    handleClick(e) {
+        let positionOffset = _util_.handleOffsetParent(this.timeline);
+        return (e.pageX - positionOffset) / this.timelineWidth;
+    };
 
-function handleResize() {
-  let padding = playhead.style.paddingLeft;
-  let p;
+    handleHover() {
+        this.timeline.addEventListener('mousemove', this.addHover.bind(this), false);
+        this.timeline.addEventListener('mouseout', this.removeHover.bind(this), false);
+    };
 
-  !padding ? p = 0 : p = parseInt(padding.substring(0, padding.length - 2));
-  timelineWidth = (timeline.offsetWidth - playhead.offsetWidth) + p;
-  handlePlayhead();
-};
+    handlePlayhead() {
+        let playPercent = this.timelineWidth * (this.source.currentTime / this.source.duration);
+        this.playhead.style.paddingLeft = `${playPercent}px`;
+    };
 
-function mouseDown() {
-  scrubber = true;
-  source.removeEventListener('timeupdate', handlePlayhead, false);
-};
+    handleResize() {
+        let padding = this.playhead.style.paddingLeft;
+        let p;
 
-function mouseUp(e) {
-  if (!scrubber) {
-    return;
-  };
+        !padding ? p = 0 : p = parseInt(padding.substring(0, padding.length - 2));
+        this.timelineWidth = (this.timeline.offsetWidth - this.playhead.offsetWidth) + p;
+        this.handlePlayhead();
+    };
 
-  movePlayhead(e);
-  window.removeEventListener('mousemove', movePlayhead, true);
-  source.currentTime = source.duration * handleClick(e);
-  source.addEventListener('timeupdate', handlePlayhead, false);
-  scrubber = false;
-};
+    mouseDown() {
+        this.scrubber = true;
+        this.source.removeEventListener('timeupdate', this.handlePlayhead.bind(this), false);
+    };
 
-function movePlayhead(e) {
-  let positionOffset = _util_.handleOffsetParent(timeline);
-  let newMargLeft = e.pageX - positionOffset;
+    mouseUp(e) {
+        if (!this.scrubber) {
+            return;
+        };
 
-  if (newMargLeft >= 0 && newMargLeft <= timelineWidth) {
-    playhead.style.paddingLeft = `${newMargLeft}px`;
-  };
+        this.movePlayhead(e);
+        window.removeEventListener('mousemove', this.movePlayhead.bind(this), true);
+        this.source.currentTime = this.source.duration * this.handleClick(e);
+        this.source.addEventListener('timeupdate', this.handlePlayhead.bind(this), false);
+        this.scrubber = false;
+    };
+    movePlayhead(e) {
+        let positionOffset = _util_.handleOffsetParent(this.timeline);
+        let newMargLeft = e.pageX - positionOffset;
 
-  if (newMargLeft < 0) {
-    playhead.style.paddingLeft = '0px';
-  };
+        if (newMargLeft >= 0 && newMargLeft <= this.timelineWidth) {
+            this.playhead.style.paddingLeft = `${newMargLeft}px`;
+        };
 
-  if (newMargLeft > timelineWidth) {
-    playhead.style.paddingLeft = `${timelineWidth}px`;
-  };
-};
+        if (newMargLeft < 0) {
+            this.playhead.style.paddingLeft = '0px';
+        };
 
-function next() {
-  let count     = current.getAttribute('src')[6];
-  let wasPaused = false;
+        if (newMargLeft > this.timelineWidth) {
+            this.playhead.style.paddingLeft = `${this.timelineWidth}px`;
+        };
+    };
 
-  if (count == album) {
-    current.setAttribute('src', `audio/${tracks[0].src}.mp3`);
-    title.innerHTML = tracks[0].title;
-    description.innerHTML = tracks[0].description;
-  } else {
-    current.setAttribute('src', `audio/${tracks[count].src}.mp3`);
-    title.innerHTML = tracks[count].title;
-    description.innerHTML = tracks[count].description;
-  };
+    next() {
+        let count     = this.current.getAttribute('src')[6];
+        let wasPaused = false;
 
-  if (source.paused) {
-    wasPaused = true;
-  };
+        if (count == this.tracks.length) {
+            this.current.setAttribute('src', `audio/${this.tracks[0].src}.mp3`);
+            this.title.innerHTML = this.tracks[0].title;
+            this.description.innerHTML = this.tracks[0].description;
+        } else {
+            this.current.setAttribute('src', `audio/${this.tracks[count].src}.mp3`);
+            this.title.innerHTML = this.tracks[count].title;
+            this.description.innerHTML = this.tracks[count].description;
+        };
 
-  source.load();
+        if (this.source.paused) {
+            wasPaused = true;
+        };
 
-  if (!wasPaused) {
-    source.play();
-  };
+        this.source.load();
 
-  playhead.style.paddingLeft = '0px';
-};
+        if (!wasPaused) {
+            this.source.play();
+        };
 
-function play() {
-  if (source.paused) {
-    source.play();
-    timeline.classList.toggle('active');
-    nextButton.classList.toggle('active');
-    prevButton.classList.toggle('active');
-    playButton.classList.toggle('active');
-    playButton.children[0].classList = '';
-    playButton.children[0].classList = 'fa fa-pause';
-  } else {
-    source.pause();
-    timeline.classList.toggle('active');
-    nextButton.classList.toggle('active');
-    prevButton.classList.toggle('active');
-    playButton.classList.toggle('active');
-    playButton.children[0].classList = '';
-    playButton.children[0].classList = 'fa fa-play';
-  };
-};
+        this.playhead.style.paddingLeft = '0px';
+    };
 
-function previous() {
-  let count     = current.getAttribute('src')[6];
-  let wasPaused = false;
+    play() {
+        if (this.source.paused) {
+            this.source.play();
+            this.timeline.classList.toggle('active');
+            this.nextButton.classList.toggle('active');
+            this.prevButton.classList.toggle('active');
+            this.playButton.classList.toggle('active');
+            this.playButton.children[0].classList = '';
+            this.playButton.children[0].classList = 'fa fa-pause';
+        } else {
+            this.source.pause();
+            this.timeline.classList.toggle('active');
+            this.nextButton.classList.toggle('active');
+            this.prevButton.classList.toggle('active');
+            this.playButton.classList.toggle('active');
+            this.playButton.children[0].classList = '';
+            this.playButton.children[0].classList = 'fa fa-play';
+        };
+    };
 
-  if (count == 1) {
-    current.setAttribute('src', `audio/${tracks[album - 1].src}.mp3`);
-    title.innerHTML = tracks[album - 1].title;
-    description.innerHTML = tracks[album - 1].description;
-  } else {
-    current.setAttribute('src', `audio/${tracks[count - 2].src}.mp3`);
-    title.innerHTML = tracks[count - 2].title;
-    description.innerHTML = tracks[count - 2].description;
-  };
+    previous() {
+        let count     = this.current.getAttribute('src')[6];
+        let wasPaused = false;
 
-  if (source.paused) {
-    wasPaused = true;
-  };
+        if (count == 1) {
+            this.current.setAttribute('src', `audio/${this.tracks[this.tracks.length - 1].src}.mp3`);
+            this.title.innerHTML = this.tracks[this.tracks.length - 1].title;
+            this.description.innerHTML = this.tracks[this.tracks.length - 1].description;
+        } else {
+            this.current.setAttribute('src', `audio/${this.tracks[count - 2].src}.mp3`);
+            this.title.innerHTML = this.tracks[count - 2].title;
+            this.description.innerHTML = this.tracks[count - 2].description;
+        };
 
-  source.load();
+        if (this.source.paused) {
+            wasPaused = true;
+        };
 
-  if (!wasPaused) {
-    source.play();
-  };
+        this.source.load();
 
-  playhead.style.paddingLeft = '0px';
-};
+        if (!wasPaused) {
+            this.source.play();
+        };
 
-function removeHover() {
-  hover.style.width = '0px';
-};
+        this.playhead.style.paddingLeft = '0px';
+    };
 
-function returnDuration() {
-  duration.innerHTML = _util_.handleTime(source.duration);
-  updateTime();
-};
+    removeHover() {
+        this.hover.style.width = '0px';
+    };
 
-function updateTime() {
-  duration.innerHTML = `${_util_.handleTime(source.currentTime)} / ${_util_.handleTime(source.duration)}`;
+    returnDuration() {
+        this.duration.innerHTML = _util_.handleTime(this.source.duration);
+        this.updateTime();
+    };
 
-  if (source.currentTime === source.duration) {;
-    next();
-    play();
-    timeline.classList.toggle('active');
-    nextButton.classList.toggle('active');
-    prevButton.classList.toggle('active');
-    playButton.classList.toggle('active');
-  };
-};
+    updateTime() {
+        this.duration.innerHTML = `${_util_.handleTime(this.source.currentTime)} / ${_util_.handleTime(this.source.duration)}`;
 
-nextButton.addEventListener('click', next);
-playButton.addEventListener('click', play);
-playhead.addEventListener('mousedown', mouseDown);
-prevButton.addEventListener('click', previous);
-source.addEventListener('durationchange', returnDuration);
-source.addEventListener('timeupdate', updateTime);
-source.addEventListener('timeupdate', handlePlayhead);
-timeline.addEventListener('mousedown', mouseDown);
-timeline.addEventListener('mouseover', handleHover);
-window.addEventListener('mouseup', mouseUp);
-window.addEventListener('resize', handleResize);
+        if (this.source.currentTime === this.source.duration) {;
+            this.next();
+            this.play();
+            this.timeline.classList.toggle('active');
+            this.nextButton.classList.toggle('active');
+            this.prevButton.classList.toggle('active');
+            this.playButton.classList.toggle('active');
+        };
+    };
+}
+
+module.exports = Audio;
