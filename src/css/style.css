@@ -1,15 +1,5 @@
-html {
-  background-color: #2b2b2b;
-}
-
-body {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
-  cursor: default;
-  color: #d4d4d4;
-}
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 a {
   text-decoration: none;
