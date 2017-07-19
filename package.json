@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "gulp-htmlmin": "^3.0.0",
+    "gulp-inject": "^4.2.0",
     "gulp-remove-html-comments": "^1.0.1",
     "uglify-es": "^3.0.25",
     "uglifyjs-webpack-plugin": "^0.4.6"
