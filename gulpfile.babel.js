@@ -6,6 +6,8 @@ import concatCss from 'gulp-concat-css';
 import webpack from 'webpack-stream';
 import htmlmin from 'gulp-htmlmin';
 import rmHtmlComments from 'gulp-remove-html-comments';
+import inject from 'gulp-inject';
+import {transform} from './lib/text-transform';
 
 const staticFiles = [
   'src/**/*.ico',
