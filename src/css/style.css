@@ -173,6 +173,10 @@ p.content.low-width {
   text-align: right;
 }
 
+.mosaic--logo:hover {
+  cursor: pointer;
+}
+
 .mosaic--logo:hover svg g .mosaic--orange {
   fill: #ffc371;
 }
