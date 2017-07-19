@@ -3,9 +3,6 @@
 
 ####todo
 1.  Animate p/h6 in player
-5.  Figure out how to put minified css into head
-
-
-CSS
-–inline CSS styles for body and some headers
-–figure out how to get font awesome and google fonts loaded better
+2.  Inject CSS intobody
+3.  Minify and inject js
+4.  Add scroll to top on bottom button
