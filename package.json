@@ -4,6 +4,7 @@
   "description": "Listen.",
   "main": "server.js",
   "scripts": {
+    "gulp": "gulp default",
     "postinstall": "gulp build",
     "start": "node server.js"
   },
