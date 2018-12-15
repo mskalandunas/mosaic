@@ -237,12 +237,6 @@ p.content.low-width {
   height: 100%;
 }
 
-#mosaic--content {
-  width: 5em;
-  float: left;
-  margin: 5px 10px 5px 0;
-}
-
 ::selection {
   background-color: rgba(0, 0, 0, 0);
 }
