@@ -1,15 +1,16 @@
 'use strict';
 
 const anchor = document.querySelector('footer a.mosaic--logo');
+
 anchor.addEventListener('click', scrollToY, false);
 
 window.requestAnimFrame = (function(){
-    return  window.requestAnimationFrame       ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame    ||
-            function(callback) {
-                window.setTimeout(callback, 1000 / 60);
-            };
+    return window.requestAnimationFrame       ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame    ||
+        function(callback) {
+            window.setTimeout(callback, 1000 / 60);
+        };
 })();
 
 function scrollToY() {
@@ -23,6 +24,7 @@ function scrollToY() {
         if ((pos /= 0.5) < 1) {
             return 0.5 * Math.pow(pos, 5);
         }
+
         return 0.5 * (Math.pow((pos - 2), 5) + 2);
     }
 

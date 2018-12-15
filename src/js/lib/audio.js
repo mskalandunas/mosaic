@@ -4,22 +4,22 @@ const _util_ = require(__dirname + '/utilities');
 
 class Audio {
     constructor(node, tracks) {
-        this.node          = node;
-        this.tracks        = tracks;
-        this.current       = this.node.querySelector('source');
-        this.description   = this.node.querySelector('.mosaic-description');
-        this.duration      = this.node.querySelector('.mosaic-time-holder');
-        this.hover         = this.node.querySelector('.mosaic-seek-bar');
-        this.nextButton    = this.node.querySelector('.mosaic-next');
-        this.playButton    = this.node.querySelector('.mosaic-play');
-        this.playhead      = this.node.querySelector('.mosaic-play-bar');
-        this.prevButton    = this.node.querySelector('.mosaic-previous');
-        this.scrubber      = false;
-        this.source        = this.node.querySelector('audio');
-        this.sub           = 'px';
-        this.timeline      = this.node.querySelector('.mosaic-progress');
+        this.node  = node;
+        this.tracks = tracks;
+        this.current = this.node.querySelector('source');
+        this.description = this.node.querySelector('.mosaic-description');
+        this.duration = this.node.querySelector('.mosaic-time-holder');
+        this.hover = this.node.querySelector('.mosaic-seek-bar');
+        this.nextButton = this.node.querySelector('.mosaic-next');
+        this.playButton = this.node.querySelector('.mosaic-play');
+        this.playhead = this.node.querySelector('.mosaic-play-bar');
+        this.prevButton = this.node.querySelector('.mosaic-previous');
+        this.scrubber = false;
+        this.source = this.node.querySelector('audio');
+        this.sub = 'px';
+        this.timeline = this.node.querySelector('.mosaic-progress');
         this.timelineWidth = this.timeline.offsetWidth - this.playhead.offsetWidth;
-        this.title         = this.node.querySelector('.mosaic-title');
+        this.title = this.node.querySelector('.mosaic-title');
 
         this.nextButton.addEventListener('click', this.next.bind(this));
         this.playButton.addEventListener('click', this.play.bind(this));
@@ -30,6 +30,7 @@ class Audio {
         this.source.addEventListener('timeupdate', this.handlePlayhead.bind(this));
         this.timeline.addEventListener('mousedown', this.mouseDown.bind(this));
         this.timeline.addEventListener('mouseover', this.handleHover.bind(this));
+
         window.addEventListener('mouseup', this.mouseUp.bind(this));
         window.addEventListener('resize', this.handleResize.bind(this));
     };
@@ -53,6 +54,7 @@ class Audio {
 
     handleClick(e) {
         let positionOffset = _util_.handleOffsetParent(this.timeline);
+
         return (e.pageX - positionOffset) / this.timelineWidth;
     };
 
