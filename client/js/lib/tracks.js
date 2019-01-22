@@ -1,6 +1,5 @@
-'use strict';
-
-const tracks = [
+/* eslint-disable max-len */
+export const tracks = [
     {
         'src'         : '1',
         'title'       : '"Through the Sunken Glades"',
@@ -32,5 +31,3 @@ const tracks = [
         'description' : 'Created as a music redesign for <em class="logo">Northguard\'s</em> winter environment.  I wanted to create a sense of cold and loneliness, and I think the solemn progression along with the deep reverbs and bass does this quite well.  The flutes, especially the Irish penny-whistle, and the fluttering strings really lend themselves well to the frigid atmosphere and the search for warmth.'
     }
 ];
-
-module.exports = tracks;
