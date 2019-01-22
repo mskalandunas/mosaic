@@ -5,3 +5,36 @@ import Audio from './lib/audio';
 
 const node = document.querySelector('.mosaic-player');
 const mosaic = new Audio(node, tracks); // eslint-disable-line no-unused-vars
+const scrollBar = document.querySelector('.mosaic-scroll-bar');
+const scrollBarHead = document.querySelector('.mosaic-scroll-bar-head');
+
+// scroll bar
+
+const getDocumentHeight = () => {
+    const body = document.querySelector('body');
+    const html = document.querySelector('html');
+
+    return Math.max(
+        body.scrollHeight,
+        body.offsetHeight,
+        html.clientHeight,
+        html.scrollHeight,
+        html.offsetHeight
+    );
+};
+
+const documentHeight = getDocumentHeight();
+const scrollBarHeight = scrollBar.offsetHeight;
+
+const percentageOfPageToScrollBarPixels = currentHeight => {
+    const percentageOfPageScrolled = currentHeight / documentHeight;
+
+    console.log(percentageOfPageScrolled);
+    return scrollBarHeight * percentageOfPageScrolled;
+};
+
+window.addEventListener('scroll', e => {
+    const currentHeight = window.pageYOffset;
+
+    scrollBarHead.style.marginTop = percentageOfPageToScrollBarPixels(currentHeight) + 'px';
+});

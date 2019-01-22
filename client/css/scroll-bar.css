@@ -1,0 +1,19 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+.mosaic-scroll-bar {
+    background: -webkit-linear-gradient(bottom right, #FF5F6D, #FFC371);
+    border-radius: 5px;
+    height: 200px;
+    left: 50px;
+    position: fixed;
+    top: 50vh;
+    width: 5px;
+}
+
+.mosaic-scroll-bar-head {
+    background-color: #2b2b2b;
+    height: 5px;
+    width: 5px;
+}
