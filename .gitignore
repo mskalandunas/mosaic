@@ -1,5 +1,7 @@
+.cache
+.vscode
 .DS_Store
-public
+dist
 
 # Logs
 logs
