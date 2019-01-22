@@ -23,7 +23,7 @@ const getDocumentHeight = () => {
     );
 };
 
-const documentHeight = getDocumentHeight();
+let documentHeight = getDocumentHeight();
 const scrollBarHeight = scrollBar.offsetHeight;
 
 const percentageOfPageToScrollBarPixels = currentHeight => {
@@ -33,8 +33,15 @@ const percentageOfPageToScrollBarPixels = currentHeight => {
     return scrollBarHeight * percentageOfPageScrolled;
 };
 
-window.addEventListener('scroll', e => {
+const calculateScrollBarHeadMargin = () => {
     const currentHeight = window.pageYOffset;
 
     scrollBarHead.style.marginTop = percentageOfPageToScrollBarPixels(currentHeight) + 'px';
+}
+
+window.addEventListener('scroll', calculateScrollBarHeadMargin);
+
+window.addEventListener('resize', () => {
+    documentHeight = getDocumentHeight();
+    calculateScrollBarHeadMargin();
 });
