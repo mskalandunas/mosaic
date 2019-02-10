@@ -2,8 +2,12 @@
 [Listen.](http://mosaicmusic.io/)
 
 ####todo
-1.  Animate p/h6 in player
-2.  Get high pagespeed score
-3.  minify HTML
-4.  Featured Image
-5.  Figure out how to put minified css into head
+1.  add navigation fixed to left side w/ social links + scroll bar
+2.  hide scroll bar
+3.  refactor music
+4.  rm unnecessary js
+5.  add new styles
+6.  Create movement w/ parallax background on vertical dividers
+7.  rewrite sass classes
+8.  speed up perf
+9.  prevent fouc

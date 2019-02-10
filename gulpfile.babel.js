@@ -1,55 +1,78 @@
-'use strict';
-
-import gulp from 'gulp';
-import cssNano from 'gulp-cssnano';
+import autoprefixer from 'gulp-autoprefixer';
 import concatCss from 'gulp-concat-css';
+import cssNano from 'gulp-cssnano';
+import gulp from 'gulp';
+import htmlmin from 'gulp-htmlmin';
+import include from 'gulp-include';
+import rmHtmlComments from 'gulp-remove-html-comments';
+import sass from 'gulp-sass';
+import sourceMaps from 'gulp-sourcemaps';
 import webpack from 'webpack-stream';
 
-const staticFiles = [
-  'src/**/*.html',
-  'src/**/*.ico',
-  'src/**/*.jpg',
-  'src/**/*.mp3',
-  'src/**/*.wav',
-  'src/**/*.svg',
-  'src/**/*.png',
-  'src/**/*.pdf'
-];
+import {
+    DESTINATION,
+    SOURCE,
+    TARGET_BROWSERS,
+    TASKS,
+    WATCH_FILES
+} from './constants';
 
-const styleSheets = [
-  'src/css/normalize.css',
-  'src/css/skeleton.css',
-  'src/css/style.css',
-  'src/css/player.css'
-];
+gulp.task(TASKS.CSS, () => gulp.src(SOURCE.CSS)
+    .pipe(sourceMaps.init())
+    .pipe(autoprefixer(TARGET_BROWSERS))
+    .pipe(concatCss(DESTINATION.VENDOR_CSS))
+    .pipe(cssNano())
+    .pipe(gulp.dest(DESTINATION.DIRECTORY))
+);
 
-gulp.task('static:dev', () => {
-  gulp.src(staticFiles)
-  .pipe(gulp.dest(__dirname + '/public/'));
+gulp.task(TASKS.HTML, () => gulp.src(SOURCE.HTML)
+    .pipe(include())
+    .on('error', console.log) // eslint-disable-line no-console
+    .pipe(htmlmin({
+        collapseWhitespace: true,
+        minifyCSS: true
+    }))
+    .pipe(rmHtmlComments()).pipe(gulp.dest(DESTINATION.DIRECTORY))
+);
+
+gulp.task(TASKS.SASS, () => gulp.src(SOURCE.SASS)
+    .pipe(sourceMaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(sourceMaps.write())
+    .pipe(autoprefixer(TARGET_BROWSERS))
+    .pipe(concatCss(DESTINATION.CSS))
+    .pipe(cssNano())
+    .pipe(gulp.dest(DESTINATION.DIRECTORY))
+);
+
+gulp.task(TASKS.STATIC, () => gulp
+    .src(SOURCE.STATIC)
+    .pipe(gulp.dest(`${__dirname}/${DESTINATION.DIRECTORY}`)));
+
+gulp.task(TASKS.WEBPACK, () => gulp.src(SOURCE.JAVASCRIPT)
+    .pipe(webpack({
+        mode: 'development',
+        output: {
+            filename: DESTINATION.JAVASCRIPT
+        }
+    }))
+    .pipe(gulp.dest(DESTINATION.DIRECTORY))
+);
+
+gulp.task(TASKS.WATCH, () => {
+    gulp.watch(SOURCE.CSS, gulp.series([TASKS.CSS]));
+    gulp.watch(SOURCE.HTML, gulp.series([TASKS.HTML]));
+    gulp.watch(SOURCE.STATIC, gulp.series([TASKS.STATIC]));
+    gulp.watch(SOURCE.TEMPLATES, gulp.series([TASKS.HTML]));
+    gulp.watch(WATCH_FILES.SASS, gulp.series([TASKS.SASS]));
+    gulp.watch(WATCH_FILES.JAVASCRIPT, gulp.series([TASKS.WEBPACK]));
 });
 
-gulp.task('webpack:dev', () => {
-  return gulp.src('src/js/app.js')
-  .pipe(webpack({
-    output: {
-      filename: 'bundle.js'
-    }
-  }))
-  .pipe(gulp.dest('public/js/'));
-});
-
-gulp.task('css:dev', () => {
-  return gulp.src(styleSheets)
-  .pipe(concatCss('main.css'))
-  .pipe(cssNano())
-  .pipe(gulp.dest(__dirname + '/public/css'));
-});
-
-gulp.task('watch:build', () => {
-  gulp.watch(staticFiles, ['static:dev']);
-  gulp.watch(styleSheets, ['css:dev']);
-  gulp.watch('src/**/*.js', ['webpack:dev']);
-});
-
-gulp.task('build', ['static:dev', 'webpack:dev', 'css:dev']);
-gulp.task('default', ['build', 'watch:build']);
+gulp.task(TASKS.BUILD, gulp.series([
+    TASKS.CSS,
+    TASKS.HTML,
+    TASKS.SASS,
+    TASKS.STATIC,
+    TASKS.WEBPACK
+]));
+gulp.task(TASKS.DEFAULT, gulp.series([TASKS.BUILD, TASKS.WATCH]));
